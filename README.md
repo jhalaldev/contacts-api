@@ -6,7 +6,6 @@
 ![Licencia](https://img.shields.io/badge/licencia-MIT-blue)
 
 API REST para gestionar contactos, con autenticación mediante Laravel Sanctum.
-Proyecto guiado del programa ADSO (SENA), ficha 3174404.
 
 ## Contenido
 - [Tecnologías](#tecnologías)
@@ -89,7 +88,7 @@ Conventional Commits y versionado semántico.
 Los cambios se registran en CHANGELOG.md.
 
 ## Autor
-Ana Pérez · aprendiz ADSO · github.com/USUARIO
+Addu Nuñez
 
 ## Licencia
 Distribuido bajo la licencia MIT. Ver LICENSE.md.
