@@ -1,15 +1,12 @@
-# TaskFlow API
+# Contacts API
 
 [![tests](https://github.com/USUARIO/taskflow-api/actions/workflows/tests.yml/badge.svg)](https://github.com/USUARIO/taskflow-api/actions/workflows/tests.yml)
 ![PHP](https://img.shields.io/badge/PHP-8.3-777BB4)
 ![Laravel](https://img.shields.io/badge/Laravel-13-FF2D20)
 ![Licencia](https://img.shields.io/badge/licencia-MIT-blue)
 
-API REST para gestionar proyectos, tareas y colaboradores.
+API REST para gestionar contactos, con autenticación mediante Laravel Sanctum.
 Proyecto guiado del programa ADSO (SENA), ficha 3174404.
-
-- Producción: https://3174404-07.rdsdevs.com.co/api/v1
-- Versión actual: v0.1.0
 
 ## Contenido
 - [Tecnologías](#tecnologías)
@@ -27,8 +24,8 @@ PHP 8.3+, Composer 2, MySQL 8, Git.
 
 ## Instalación
 ```bash
-git clone git@github.com:USUARIO/taskflow-api.git
-cd taskflow-api
+git clone https://github.com/jhalaldev/contacts-api.git
+cd contacts-api
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -45,8 +42,8 @@ Diagrama entidad-relación: [docs/er.md](docs/er.md)
 php artisan migrate:fresh --seed
 ```
 
-Crea un administrador (admin@taskflow.test / password), 8 colaboradores,
-4 proyectos y 24 tareas. Solo para desarrollo local.
+Crea el usuario de prueba `test@example.com` (contraseña `password`), diez usuarios
+aleatorios y tres contactos para cada uno de los primeros diez usuarios, para desarrollo local.
 
 ## Variables de entorno
 | Variable    | Ejemplo        | Descripción             |
@@ -70,6 +67,11 @@ Con el servidor local: http://127.0.0.1:8000/docs/api
 | POST   | /api/v1/auth/login   | Inicia sesión y entrega un token  | No     |
 | GET    | /api/v1/auth/me      | Perfil del usuario autenticado    | Bearer |
 | POST   | /api/v1/auth/logout  | Cierra sesión y revoca el token   | Bearer |
+| GET    | /api/v1/contacts     | Lista los contactos del usuario   | Bearer |
+| POST   | /api/v1/contacts     | Crea un contacto                  | Bearer |
+| GET    | /api/v1/contacts/{id}| Consulta un contacto propio       | Bearer |
+| PUT/PATCH | /api/v1/contacts/{id} | Actualiza un contacto propio   | Bearer |
+| DELETE | /api/v1/contacts/{id}| Elimina un contacto propio        | Bearer |
 
 ## Autenticación
 

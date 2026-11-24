@@ -1,44 +1,36 @@
-# Modelo de datos de TaskFlow API
+# Modelo de datos de Contacts API
 
 ```mermaid
 erDiagram
-    USERS ||--o{ PROJECTS : "crea (created_by)"
-    USERS ||--o{ PROJECT_USER : "participa"
-    PROJECTS ||--o{ PROJECT_USER : "tiene participantes"
-    PROJECTS ||--o{ TASKS : "contiene"
-    USERS ||--o{ TASKS : "responsable (assigned_to)"
+    USERS ||--o{ CONTACTS : "posee"
+    USERS ||--o{ PERSONAL_ACCESS_TOKENS : "autentica"
 
     USERS {
         bigint id PK
         string name
         string email UK
         string password
-        boolean is_active
+        timestamp email_verified_at
     }
-    PROJECTS {
+    CONTACTS {
         bigint id PK
+        bigint user_id FK
         string name
-        text description
-        date start_date
-        date end_date
-        string status "planning, active, completed, cancelled"
+        string email
+        string phone_number
+        text address
+        string url_avatar
         bigint created_by FK
+        bigint updated_by FK
+        bigint deleted_by FK
         timestamp deleted_at
     }
-    PROJECT_USER {
+    PERSONAL_ACCESS_TOKENS {
         bigint id PK
-        bigint project_id FK
-        bigint user_id FK
-    }
-    TASKS {
-        bigint id PK
-        bigint project_id FK
-        bigint assigned_to FK
-        bigint created_by FK
-        string title
-        text description
-        date due_date
-        string priority "low, medium, high"
-        string status "pending, in_progress, completed, cancelled"
+        bigint tokenable_id FK
+        string name
+        string token UK
+        timestamp last_used_at
+        timestamp expires_at
     }
 ```
